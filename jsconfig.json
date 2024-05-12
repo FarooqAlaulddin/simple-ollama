@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"target": "ES6",
+		"checkJs": false, /* Typecheck .js files. */
+		"lib": [
+			"ES6"
+		]
+	},
+	"exclude": [
+		"node_modules"
+	]
+}

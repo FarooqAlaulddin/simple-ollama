@@ -1,0 +1,65 @@
+{
+  "name": "ollama-jsdoc-generator",
+  "displayName": "Ollama JSDoc Generator",
+  "description": "Not sure for now",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "simple-ollama.helloWorld",
+        "title": "AI JSDocs"
+      },
+      {
+        "command": "simple-ollama.healthcheck",
+        "title": "Health Check"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "simple-ollama.helloWorld",
+          "group": "navigation",
+          "when": "editorTextFocus && simple-ollama.enabled"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "yarn run lint",
+    "test": "vscode-test",
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild extension=src/extension.js --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.89.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.21.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "acorn": "^8.11.3",
+    "acorn-jsx": "^5.3.2",
+    "acorn-walk": "^8.3.2",
+    "axios": "^1.6.8",
+    "jsdoc": "^4.0.3",
+    "node-fetch": "2.7.0"
+  }
+}
